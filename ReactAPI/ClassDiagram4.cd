@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ReactAPI.Program">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Startup">
+    <Position X="15.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAACAAAAAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.AQLController">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAAQAAEAA=</HashCode>
+      <FileName>Controllers\AQLController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.ArtikelController">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAEAg=</HashCode>
+      <FileName>Controllers\ArtikelController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.ArtikelPruefplanController">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACEAAAAAAAAEAAAAAEAg=</HashCode>
+      <FileName>Controllers\ArtikelPruefplanController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.PruefplanController">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAEAg=</HashCode>
+      <FileName>Controllers\PruefplanController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.PruefplanPosController">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PruefplanPosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Controllers.WareneingangController">
+    <Position X="5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEBAAAAAAAAACEAAAAEAAAEAAQAAAAg=</HashCode>
+      <FileName>Controllers\WareneingangController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.AQL">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAiAAAAAAAAAAAAAEAAAAAAIAAAAAApAA=</HashCode>
+      <FileName>Models\AQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.AQLPostRequest">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAJAA=</HashCode>
+      <FileName>Models\AQLPostRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.AQLResponse">
+    <Position X="17.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\AQLResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.Artikel">
+    <Position X="24.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAAiAAACAACAAAgCAAAAAAACAAAAAAAABA=</HashCode>
+      <FileName>Models\Artikel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.ArtikelPruefplanPostRequest">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\ArtikelPruefplanPostRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.ArtikelPruefplanResponse">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAggCAAAAAAAAAAAACCAAAAAAAQACAAAAA=</HashCode>
+      <FileName>Models\ArtikelPruefplanResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.Pruefplan">
+    <Position X="26.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAABCBAAAQFAkIAwABAGAEIAAAAAAQABAAQCAQAChBg=</HashCode>
+      <FileName>Models\Pruefplan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.PruefplanPos">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAASAAgCAIAAACAAAAAAAABACACAAAAgAAABA=</HashCode>
+      <FileName>Models\PruefplanPos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.Wareneingang">
+    <Position X="29" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACBQAgAAKMgAKAAAAAQAAAAACAAAAgAABCAACAAAA=</HashCode>
+      <FileName>Models\Wareneingang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.WareneingangPostRequest">
+    <Position X="5.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAAKMAAKAAAAAAAAAAAAAAAAgAAAAACAAAAA=</HashCode>
+      <FileName>Models\WareneingangPostRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReactAPI.Models.WareneingangResponse">
+    <Position X="22.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQADQACoAALsACKBBAAEBACAAiCCAAAgAAAQACCAAAA=</HashCode>
+      <FileName>Models\WareneingangResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Mvc.ControllerBase" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
