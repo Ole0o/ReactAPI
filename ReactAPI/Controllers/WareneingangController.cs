@@ -338,6 +338,107 @@ namespace ReactAPI.Controllers
 
         }
 
+        private List<Wareneingangspositionen> LoadWareneingangspositionen()
+        {
+
+            var WareneingangsposList = new List<Wareneingangspositionen>();
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(sqlDataSource))
+                {
+
+                    {
+                        con.Open();
+                        DbCommand cmd = con.CreateCommand();
+                        cmd.CommandText = "Select ID, IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL , BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, " +
+                            " NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, CONVERT(VARCHAR(30),DATUMEDIT,121) DATUMEDIT,CONVERT(VARCHAR(30),DATUMNEU,121) DATUMNEU, MESSMITTEL from dbo.Wareneingangspositionen";
+                        DbDataReader dbDataReader = cmd.ExecuteReader();
+                        while (dbDataReader.Read())
+                        {
+                            var Wareneingangsposition = new Wareneingangspositionen();
+                            Wareneingangsposition.ID = int.Parse(dbDataReader["ID"].ToString());
+                            Wareneingangsposition.IDWareneingang = int.Parse(dbDataReader["IDWENUMMER"].ToString());
+                            Wareneingangsposition.IDPruefplan = int.Parse(dbDataReader["IDPRUEFPLAN"].ToString());
+                            Wareneingangsposition.IDPruefplanpos = int.Parse(dbDataReader["IDPRUEFPLANPOSITION"].ToString());
+                            Wareneingangsposition.Pruefmerkal = dbDataReader["PRUEFMERKMAL"].ToString();
+                            Wareneingangsposition.Merkmalsart = dbDataReader["MERKMALSART"].ToString();
+                            Wareneingangsposition.Positionsnummer = int.Parse(dbDataReader["POSITIONSNUMMER"].ToString());
+                            Wareneingangsposition.Kurzel = dbDataReader["KUERZEL"].ToString();
+                            Wareneingangsposition.Bezeichnung1 = dbDataReader["BEZEICHNUNG1"].ToString();
+                            Wareneingangsposition.Bezeichnung2 = dbDataReader["BEZEICHNUNG2"].ToString();
+                            Wareneingangsposition.Bezeichnung3 = dbDataReader["BEZEICHNUNG3"].ToString();
+                            Wareneingangsposition.BezeichnungT = dbDataReader["BEZEICHNUNGT"].ToString();
+                            Wareneingangsposition.Nennmaß = decimal.Parse(dbDataReader["NENNMAß"].ToString());
+                            Wareneingangsposition.Maßeinheit = dbDataReader["MAßEINHEIT"].ToString();
+                            Wareneingangsposition.Oberetoleranz = decimal.Parse(dbDataReader["OBERETOLERANZ"].ToString());
+                            Wareneingangsposition.Unteretoleranz = decimal.Parse(dbDataReader["UNTERETOLERANZ"].ToString());
+                            Wareneingangsposition.DatumNeu = dbDataReader["DATUMEDIT"].ToString();
+                            Wareneingangsposition.DatumEdit = dbDataReader["DATUMNEU"].ToString();
+                            Wareneingangsposition.Messmittel = dbDataReader["MESSMITTEL"].ToString();
+                            WareneingangsposList.Add(Wareneingangsposition);
+                        }
+
+                        dbDataReader.Close();
+                        con.Close();
+                    }
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return WareneingangsposList;
+
+        }
+
+        private List<WareneingangsID> LoadWEID()
+        {
+
+
+            var WEIDList = new List<WareneingangsID>();
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(sqlDataSource))
+                {
+
+                    {
+                        con.Open();
+                        DbCommand cmd = con.CreateCommand();
+                        cmd.CommandText = "Select ID from dbo.Wareneingang WHERE WARENEINGANGSDATUM = (SELECT MAX(WARENEINGANGSDATUM) from dbo.Wareneingang)";
+                        DbDataReader dbDataReader = cmd.ExecuteReader();
+                        while (dbDataReader.Read())
+                        {
+                            var WeItem = new WareneingangsID();
+                            WeItem.ID = int.Parse(dbDataReader["ID"].ToString());
+                            WEIDList.Add(WeItem);
+                        }
+
+                        dbDataReader.Close();
+                        con.Close();
+                    }
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return WEIDList;
+
+        }
+
         public JsonResult Get()
         {
 
@@ -487,6 +588,7 @@ namespace ReactAPI.Controllers
             var ArtikelList = LoadArtikel();
             var PruefplanList = LoadPruefplan();
             var PruefplanArtikelList = LoadPruefplanArtikel();
+            var PrueflanposList = LoadPruefplanPositionen();
 
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
 
@@ -522,7 +624,7 @@ namespace ReactAPI.Controllers
                 return new JsonResult(new List<ArtikelPruefplanPostRequest>());
 
             }
-
+           
             using (SqlConnection con = new SqlConnection(sqlDataSource))
             {
 
@@ -626,15 +728,145 @@ namespace ReactAPI.Controllers
                     con.Close();
                 }
 
-            }         
+            }
 
-         return new JsonResult("Anlage erfolgreich");
+
+            using (SqlConnection con = new SqlConnection(sqlDataSource))
+            {
+                var WEIDList = LoadWEID();
+                var wepositem = new Wareneingangspositionen();
+                var WEID = WEIDList.First();
+
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Insert into dbo.Wareneingangspositionen (IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL, BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, DATUMEDIT, DATUMNEU, MESSMITTEL) values" +
+                            "(@IDWENUMMER, @IDPRUEFPLAN, @IDPRUEFPLANPOSITION, @PRUEFMERKMAL, @MERKMALSART, @POSITIONSNUMMER, @KUERZEL, @BEZEICHNUNG1, @BEZEICHNUNG2, @BEZEICHNUNG3, @BEZEICHNUNGT, @NENNMAß, @MAßEINHEIT, @OBERETOLERANZ, @UNTERETOLERANZ, @DATUMEDIT, @DATUMNEU, @MESSMITTEL)");
+
+                    foreach (var positem in PrueflanposList.FindAll(xF => xF.IDPruefplan == pruefplanitem.ID))
+                    {
+                        wepositem.IDWareneingang = WEID.ID;
+                        if (wepositem.IDWareneingang != 0)
+                            cmd.Parameters.AddWithValue("@IDWENUMMER", wepositem.IDWareneingang);
+                        else
+                            cmd.Parameters.AddWithValue("@IDWENUMMER", DBNull.Value);
+
+                        wepositem.IDPruefplan = pruefplanitem.ID;
+                        if(wepositem.IDPruefplan != 0)
+                            cmd.Parameters.AddWithValue("@IDPRUEFPLAN", wepositem.IDPruefplan);
+                        else
+                            cmd.Parameters.AddWithValue("@IDPRUEFPLAN", DBNull.Value);
+
+                        wepositem.IDPruefplanpos = positem.ID;
+                        if (wepositem.IDPruefplanpos != 0)
+                            cmd.Parameters.AddWithValue("@IDPRUEFPLANPOSITION", wepositem.IDPruefplanpos);
+                        else
+                            cmd.Parameters.AddWithValue("@IDPRUEFPLANPOSITION", DBNull.Value);
+
+                        wepositem.Pruefmerkal = positem.Pruefmerkal;
+                        if (wepositem.Pruefmerkal != null)
+                            cmd.Parameters.AddWithValue("@PRUEFMERKMAL", wepositem.Pruefmerkal);
+                        else
+                            cmd.Parameters.AddWithValue("@PRUEFMERKMAL", DBNull.Value);
+
+                        wepositem.Merkmalsart = positem.Merkmalsart;
+                        if (wepositem.Merkmalsart != null)
+                            cmd.Parameters.AddWithValue("@MERKMALSART", wepositem.Merkmalsart);
+                        else
+                            cmd.Parameters.AddWithValue("@MERKMALSART", DBNull.Value);
+
+                        wepositem.Positionsnummer = positem.Positionsnummer;
+                        if (wepositem.Positionsnummer != 0)
+                            cmd.Parameters.AddWithValue("@POSITIONSNUMMER", wepositem.Positionsnummer);
+                        else
+                            cmd.Parameters.AddWithValue("@POSITIONSNUMMER", DBNull.Value);
+
+                        wepositem.Kurzel = positem.Kurzel;
+                        if (wepositem.Kurzel != null)
+                            cmd.Parameters.AddWithValue("@KUERZEL", wepositem.Kurzel);
+                        else
+                            cmd.Parameters.AddWithValue("@KUERZEL", DBNull.Value);
+
+                        wepositem.Bezeichnung1 = positem.Bezeichnung1;
+                        if (wepositem.Bezeichnung1 != null)
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG1", wepositem.Bezeichnung1);
+                        else
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG1", DBNull.Value);
+
+                        wepositem.Bezeichnung2 = positem.Bezeichnung2;
+                        if (wepositem.Bezeichnung2 != null)
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG2", wepositem.Bezeichnung2);
+                        else
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG2", DBNull.Value);
+
+                        wepositem.Bezeichnung3 = positem.Bezeichnung3;
+                        if (wepositem.Bezeichnung3 != null)
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG3", wepositem.Bezeichnung3);
+                        else
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNG3", DBNull.Value);
+
+                        wepositem.BezeichnungT = positem.BezeichnungT;
+                        if (wepositem.BezeichnungT != null)
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNGT", wepositem.BezeichnungT);
+                        else
+                            cmd.Parameters.AddWithValue("@BEZEICHNUNGT", DBNull.Value);
+
+                        wepositem.Nennmaß = positem.Nennmaß;
+                        if (wepositem.Nennmaß != 0)
+                            cmd.Parameters.AddWithValue("@NENNMAß", wepositem.Nennmaß);
+                        else
+                            cmd.Parameters.AddWithValue("@NENNMAß", DBNull.Value);
+
+                        wepositem.Maßeinheit = positem.Maßeinheit;
+                        if (wepositem.Maßeinheit != null)
+                            cmd.Parameters.AddWithValue("@MAßEINHEIT", wepositem.Maßeinheit);
+                        else
+                            cmd.Parameters.AddWithValue("@MAßEINHEIT", DBNull.Value);
+
+                        wepositem.Oberetoleranz = positem.Oberetoleranz;
+                        if (wepositem.Oberetoleranz != 0)
+                            cmd.Parameters.AddWithValue("@OBERETOLERANZ", wepositem.Oberetoleranz);
+                        else
+                            cmd.Parameters.AddWithValue("@OBERETOLERANZ", DBNull.Value);
+
+                        wepositem.Unteretoleranz = positem.Unteretoleranz;
+                        if (wepositem.Unteretoleranz != 0)
+                            cmd.Parameters.AddWithValue("@UNTERETOLERANZ", wepositem.Unteretoleranz);
+                        else
+                            cmd.Parameters.AddWithValue("@UNTERETOLERANZ", DBNull.Value);
+
+                        wepositem.DatumEdit = System.DateTime.Now.ToShortDateString();
+                        if (wepositem.DatumEdit != null)
+                            cmd.Parameters.AddWithValue("@DATUMEDIT", wepositem.DatumEdit);
+                        else
+                            cmd.Parameters.AddWithValue("@DATUMEDIT", DBNull.Value);
+
+                        wepositem.DatumNeu = System.DateTime.Now.ToShortDateString();
+                        if (wepositem.DatumNeu != null)
+                            cmd.Parameters.AddWithValue("@DATUMNEU", wepositem.DatumNeu);
+                        else
+                            cmd.Parameters.AddWithValue("@DATUMNEU", DBNull.Value);
+
+                        wepositem.Messmittel = positem.Messmittel;
+                        if (wepositem.Messmittel != null)
+                            cmd.Parameters.AddWithValue("@MESSMITTEL", wepositem.Messmittel);
+                        else
+                            cmd.Parameters.AddWithValue("@MESSMITTEL", DBNull.Value);
+
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+
+                    }
+                    con.Close();
+                }
+
+            }
+
+            return new JsonResult("Anlage erfolgreich");
 
 
         }
-            
 
-    }
-
+    }            
     
 }
