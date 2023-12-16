@@ -12,13 +12,13 @@ namespace ReactAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WareneingangspositionenController : ControllerBase
+    public class WareneingangspruefpositionenController : ControllerBase
     {
 
         private readonly IConfiguration _configuration;
       
 
-        public WareneingangspositionenController(IConfiguration configuration)
+        public WareneingangspruefpositionenController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -28,7 +28,7 @@ namespace ReactAPI.Controllers
         public JsonResult Get()
         {
 
-            List<Wareneingangspositionen> WareneingangsposList = new List<Wareneingangspositionen>();
+            List<Wareneingangspruefpositionen> WareneingangsposList = new List<Wareneingangspruefpositionen>();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
 
 
@@ -41,11 +41,11 @@ namespace ReactAPI.Controllers
                         con.Open();
                         DbCommand cmd = con.CreateCommand();
                         cmd.CommandText = "Select ID, IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL , BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, " +
-                            " NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, CONVERT(VARCHAR(30),DATUMEDIT,121) DATUMEDIT,CONVERT(VARCHAR(30),DATUMNEU,121) DATUMNEU, MESSMITTEL from dbo.Wareneingangspositionen";
+                            " NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, CONVERT(VARCHAR(30),DATUMEDIT,121) DATUMEDIT,CONVERT(VARCHAR(30),DATUMNEU,121) DATUMNEU, MESSMITTEL from dbo.Wareneingangspruefpositionen";
                         DbDataReader dbDataReader = cmd.ExecuteReader();
                         while (dbDataReader.Read())
                         {
-                            var Wareneingangsposition = new Wareneingangspositionen();
+                            var Wareneingangsposition = new Wareneingangspruefpositionen();
                             Wareneingangsposition.ID = int.Parse(dbDataReader["ID"].ToString());
                             Wareneingangsposition.IDWareneingang = int.Parse(dbDataReader["IDWENUMMER"].ToString());
                             Wareneingangsposition.IDPruefplan = int.Parse(dbDataReader["IDPRUEFPLAN"].ToString());

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ReactAPI.Models
 {
-    public class Wareneingangspositionen
+    public class Wareneingangspruefpositionen
     {
 
         public int ID { get; set; }

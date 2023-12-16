@@ -338,10 +338,10 @@ namespace ReactAPI.Controllers
 
         }
 
-        private List<Wareneingangspositionen> LoadWareneingangspositionen()
+        private List<Wareneingangspruefpositionen> LoadWareneingangspositionen()
         {
 
-            var WareneingangsposList = new List<Wareneingangspositionen>();
+            var WareneingangsposList = new List<Wareneingangspruefpositionen>();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
 
 
@@ -358,7 +358,7 @@ namespace ReactAPI.Controllers
                         DbDataReader dbDataReader = cmd.ExecuteReader();
                         while (dbDataReader.Read())
                         {
-                            var Wareneingangsposition = new Wareneingangspositionen();
+                            var Wareneingangsposition = new Wareneingangspruefpositionen();
                             Wareneingangsposition.ID = int.Parse(dbDataReader["ID"].ToString());
                             Wareneingangsposition.IDWareneingang = int.Parse(dbDataReader["IDWENUMMER"].ToString());
                             Wareneingangsposition.IDPruefplan = int.Parse(dbDataReader["IDPRUEFPLAN"].ToString());
@@ -734,12 +734,12 @@ namespace ReactAPI.Controllers
             using (SqlConnection con = new SqlConnection(sqlDataSource))
             {
                 var WEIDList = LoadWEID();
-                var wepositem = new Wareneingangspositionen();
+                var wepositem = new Wareneingangspruefpositionen();
                 var WEID = WEIDList.First();
 
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("Insert into dbo.Wareneingangspositionen (IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL, BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, DATUMEDIT, DATUMNEU, MESSMITTEL) values" +
+                    SqlCommand cmd = new SqlCommand("Insert into dbo.Wareneingangspruefpositionen (IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL, BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, DATUMEDIT, DATUMNEU, MESSMITTEL) values" +
                             "(@IDWENUMMER, @IDPRUEFPLAN, @IDPRUEFPLANPOSITION, @PRUEFMERKMAL, @MERKMALSART, @POSITIONSNUMMER, @KUERZEL, @BEZEICHNUNG1, @BEZEICHNUNG2, @BEZEICHNUNG3, @BEZEICHNUNGT, @NENNMAß, @MAßEINHEIT, @OBERETOLERANZ, @UNTERETOLERANZ, @DATUMEDIT, @DATUMNEU, @MESSMITTEL)");
 
                     foreach (var positem in PrueflanposList.FindAll(xF => xF.IDPruefplan == pruefplanitem.ID))
