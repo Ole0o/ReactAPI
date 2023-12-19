@@ -22,8 +22,7 @@ namespace ReactAPI.Controllers
 
 
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-
+     
         public ArtikelController(IConfiguration configuration)
         {
             _configuration = configuration;

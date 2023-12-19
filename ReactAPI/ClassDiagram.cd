@@ -7,10 +7,10 @@
       <FileName>Controllers\AQLController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ReactAPI.Controllers.ArtikelController" Collapsed="true">
-    <Position X="12.75" Y="0.5" Width="1.5" />
+  <Class Name="ReactAPI.Controllers.ArtikelController">
+    <Position X="9.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAEAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAAAg=</HashCode>
       <FileName>Controllers\ArtikelController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,12 +24,12 @@
   <Class Name="ReactAPI.Controllers.PruefplanController">
     <Position X="7.75" Y="1.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAEAg=</HashCode>
       <FileName>Controllers\PruefplanController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Controllers.PruefplanPosController">
-    <Position X="7.5" Y="6" Width="2.75" />
+    <Position X="5.75" Y="4.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\PruefplanPosController.cs</FileName>
@@ -85,21 +85,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Models.ArtikelPruefplanResponse" Collapsed="true">
-    <Position X="11" Y="1.5" Width="1.5" />
+    <Position X="13.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAASAggCAAAAAAAAAAAACCAAAAAAAQACAAAAA=</HashCode>
       <FileName>Models\ArtikelPruefplanResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Models.Pruefplan" Collapsed="true">
-    <Position X="3.25" Y="6.25" Width="1.5" />
+    <Position X="2.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>JAABABAAAQFAkIAwABAGAEIAAAAAAQABAAQiAQAChBg=</HashCode>
       <FileName>Models\Pruefplan.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Models.PruefplanPos" Collapsed="true">
-    <Position X="11" Y="2.5" Width="1.5" />
+    <Position X="8" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQABAAAAASAAgCAIAAACAAEAAAAABACACAAAAgAAABA=</HashCode>
       <FileName>Models\PruefplanPos.cs</FileName>
