@@ -215,7 +215,6 @@ namespace ReactAPI.Controllers
         public JsonResult Delete(int id)
         {
 
-            List<Pruefplan> PruefplanList = new List<Pruefplan>();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
 
 
@@ -244,35 +243,6 @@ namespace ReactAPI.Controllers
 
             return new JsonResult("Delete succesfully");
 
-        }
-
-        [Route("SaveFile")]
-        [HttpPost]
-
-        public JsonResult SaveFile()
-        {
-            try
-            {
-                var httpRequest = Request.Form;
-                var postedFile = httpRequest.Files[0];
-                string filename = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + "/Photo/" + filename;
-
-                using (var stream = new FileStream(physicalPath, FileMode.Create))
-                {
-                    postedFile.CopyTo(stream);
-                }
-
-                return new JsonResult(filename);
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-
-            }
-
-            return new JsonResult("anonynous.png");
         }
     }
 }

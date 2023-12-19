@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
-  <Class Name="ReactAPI.Controllers.AQLController" Collapsed="true">
-    <Position X="11.5" Y="1.5" Width="1.5" />
+  <Class Name="ReactAPI.Controllers.AQLController">
+    <Position X="13" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAAQAAEAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAEAAQAAAAA=</HashCode>
       <FileName>Controllers\AQLController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Controllers.ArtikelController">
     <Position X="9.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAABAEAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAAAAEAAAAAAAg=</HashCode>
       <FileName>Controllers\ArtikelController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Controllers.ArtikelPruefplanController">
     <Position X="2.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACEAAAAAAAAEAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACEEAAAAAAAEAAAAAAAg=</HashCode>
       <FileName>Controllers\ArtikelPruefplanController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,7 +36,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Controllers.WareneingangController">
-    <Position X="4.75" Y="0.5" Width="3" />
+    <Position X="5.25" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAEBIAAAAAAAACEAAAAEAAAEAAQAAAAg=</HashCode>
       <FileName>Controllers\WareneingangController.cs</FileName>
@@ -78,14 +78,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Models.ArtikelPruefplanPostRequest" Collapsed="true">
-    <Position X="13.75" Y="1" Width="1.5" />
+    <Position X="3" Y="3.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Models\ArtikelPruefplanPostRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReactAPI.Models.ArtikelPruefplanResponse" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
+    <Position X="10.75" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAASAggCAAAAAAAAAAAACCAAAAAAAQACAAAAA=</HashCode>
       <FileName>Models\ArtikelPruefplanResponse.cs</FileName>

@@ -21,16 +21,11 @@ namespace ReactAPI.Controllers
     public class AQLController : ControllerBase
     {
 
-        
-
-
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
 
-        public AQLController(IConfiguration configuration, IWebHostEnvironment env)
+        public AQLController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _env = env;
         }
 
 
@@ -114,8 +109,6 @@ namespace ReactAPI.Controllers
             return new JsonResult(rAQLList);
 
         }
-
-       
 
 
     }
