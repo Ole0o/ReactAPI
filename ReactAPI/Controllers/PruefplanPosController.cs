@@ -219,5 +219,43 @@ namespace ReactAPI.Controllers
             return new JsonResult("Insert succesfully");
 
         }
+
+        [HttpDelete("{id}")]
+
+        public JsonResult Delete(int id)
+        {
+
+            List<PruefplanPos> PruefplanList = new List<PruefplanPos>();
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(sqlDataSource))
+                {
+
+                    {
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("Delete from dbo.Pruefplanpositionen  where ID=@ID");
+                        cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Connection = con;
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return new JsonResult("Delete succesfully");
+
+        }
+
+
     }
 }

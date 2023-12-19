@@ -22,12 +22,11 @@ namespace ReactAPI.Controllers
     {
 
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
 
         public ArtikelPruefplanController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
-            _env = env;
+        
         }
 
 

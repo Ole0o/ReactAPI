@@ -40,14 +40,14 @@ namespace ReactAPI.Controllers
                     {
                         con.Open();
                         DbCommand cmd = con.CreateCommand();
-                        cmd.CommandText = "Select ID, IDWENUMMER, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL , BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, " +
+                        cmd.CommandText = "Select ID, IDWARENEINGANG, IDPRUEFPLAN, IDPRUEFPLANPOSITION, PRUEFMERKMAL, MERKMALSART, POSITIONSNUMMER, KUERZEL , BEZEICHNUNG1, BEZEICHNUNG2, BEZEICHNUNG3, BEZEICHNUNGT, " +
                             " NENNMAß, MAßEINHEIT, OBERETOLERANZ, UNTERETOLERANZ, CONVERT(VARCHAR(30),DATUMEDIT,121) DATUMEDIT,CONVERT(VARCHAR(30),DATUMNEU,121) DATUMNEU, MESSMITTEL from dbo.Wareneingangspruefpositionen";
                         DbDataReader dbDataReader = cmd.ExecuteReader();
                         while (dbDataReader.Read())
                         {
                             var Wareneingangsposition = new Wareneingangspruefpositionen();
                             Wareneingangsposition.ID = int.Parse(dbDataReader["ID"].ToString());
-                            Wareneingangsposition.IDWareneingang = int.Parse(dbDataReader["IDWENUMMER"].ToString());
+                            Wareneingangsposition.IDWareneingang = int.Parse(dbDataReader["IDWARENEINGANG"].ToString());
                             Wareneingangsposition.IDPruefplan = int.Parse(dbDataReader["IDPRUEFPLAN"].ToString());
                             Wareneingangsposition.IDPruefplanpos = int.Parse(dbDataReader["IDPRUEFPLANPOSITION"].ToString());
                             Wareneingangsposition.Pruefmerkal = dbDataReader["PRUEFMERKMAL"].ToString();
